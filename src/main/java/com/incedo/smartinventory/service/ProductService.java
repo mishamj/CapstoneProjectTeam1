@@ -26,6 +26,17 @@ public class ProductService {
    public List<Product> addProducts(List<Product> product) {
  return productRepository.saveAll(product);
  }
+     public Product updateProduct(Product updatedProduct) {
+       Product originalProduct = productRepository.findById(updatedProduct.getProduct_id()).orElse(null);
+       originalProduct.setProductName(updatedProduct.getProductName());
+       originalProduct.setProductDiscription(updatedProduct.getProductDiscription());
+       originalProduct.setProductPrice(updatedProduct.getProductPrice());
+       originalProduct.setProductQuantity(updatedProduct.getProductQuantity());
+       originalProduct.setSupplierId(updatedProduct.getSupplierId());
+       
+      
+       return productRepository.save(originalProduct);
+   }
    
   public String deleteProduct(Long id) {
       productRepository.deleteById(id);;
