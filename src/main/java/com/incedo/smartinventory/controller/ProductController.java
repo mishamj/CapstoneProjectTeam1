@@ -40,7 +40,10 @@ public class ProductController {
 	   public Product getProduct(@PathVariable  Long id){
 		   return productService.getProduct(id);
 		}
-	 
+	  @PutMapping("/updateProd")
+	 public Product updateProduct(@RequestBody Product product) { 
+		 return productService.updateProduct(product);
+	 }
 
 	   @DeleteMapping("/deleteProd/{id}")
 	   public String deleteProduct(@PathVariable Long id) {
